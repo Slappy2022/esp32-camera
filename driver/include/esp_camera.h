@@ -112,14 +112,8 @@ typedef struct {
     int pin_pwdn;                   /*!< GPIO pin for camera power down line */
     int pin_reset;                  /*!< GPIO pin for camera reset line */
     int pin_xclk;                   /*!< GPIO pin for camera XCLK line */
-    union {
-        int pin_sccb_sda;           /*!< GPIO pin for camera SDA line */
-        int pin_sscb_sda __attribute__((deprecated("please use pin_sccb_sda instead")));           /*!< GPIO pin for camera SDA line (legacy name) */
-    };
-    union {
-        int pin_sccb_scl;           /*!< GPIO pin for camera SCL line */
-        int pin_sscb_scl __attribute__((deprecated("please use pin_sccb_scl instead")));           /*!< GPIO pin for camera SCL line (legacy name) */
-    };
+    int pin_sccb_sda;               /*!< GPIO pin for camera SDA line */
+    int pin_sccb_scl;               /*!< GPIO pin for camera SCL line */
     int pin_d7;                     /*!< GPIO pin for camera D7 line */
     int pin_d6;                     /*!< GPIO pin for camera D6 line */
     int pin_d5;                     /*!< GPIO pin for camera D5 line */

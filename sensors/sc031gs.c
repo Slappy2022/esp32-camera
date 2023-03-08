@@ -238,8 +238,8 @@ static int set_output_window(sensor_t *sensor, int offset_x, int offset_y, int w
 
 static int set_framesize(sensor_t *sensor, framesize_t framesize)
 {
-    uint16_t w = resolution[framesize].width;
-    uint16_t h = resolution[framesize].height;
+    uint16_t w = resolution_info[framesize].width;
+    uint16_t h = resolution_info[framesize].height;
     if(w > SC031GS_MAX_FRAME_WIDTH || h > SC031GS_MAX_FRAME_HIGH) {
         goto err; 
     }

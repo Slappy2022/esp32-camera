@@ -289,7 +289,7 @@ static esp_err_t cam_dma_config(const camera_config_t *config)
         cam_obj->frames[x].dma = NULL;
         cam_obj->frames[x].fb_offset = 0;
         cam_obj->frames[x].en = 0;
-        ESP_LOGI(TAG, "Allocating %d Byte frame buffer in %s", alloc_size, _caps & MALLOC_CAP_SPIRAM ? "PSRAM" : "OnBoard RAM");
+        ESP_LOGI(TAG, "Allocating %u Byte frame buffer in %s", alloc_size, _caps & MALLOC_CAP_SPIRAM ? "PSRAM" : "OnBoard RAM");
 #if ESP_IDF_VERSION >= ESP_IDF_VERSION_VAL(4, 3, 0)
         // In IDF v4.2 and earlier, memory returned by heap_caps_aligned_alloc must be freed using heap_caps_aligned_free.
         // And heap_caps_aligned_free is deprecated on v4.3.
@@ -369,8 +369,8 @@ esp_err_t cam_config(const camera_config_t *config, framesize_t frame_size, uint
     cam_obj->psram_mode = (config->xclk_freq_hz == 16000000);
 #endif
     cam_obj->frame_cnt = config->fb_count;
-    cam_obj->width = resolution[frame_size].width;
-    cam_obj->height = resolution[frame_size].height;
+    cam_obj->width = resolution_info[frame_size].width;
+    cam_obj->height = resolution_info[frame_size].height;
 
     if(cam_obj->jpeg_mode){
         cam_obj->recv_size = cam_obj->width * cam_obj->height / 5;
